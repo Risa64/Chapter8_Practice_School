@@ -13,14 +13,21 @@ public class Cleric {
 			
 			this.mp = this.mp + recover;
 				System.out.println("this.mp became " + this.mp);
+
+			// Developer way			
+//			int recoverActual = Math.min(this.MAX_MP - this.mp, recover);
+//			this.mp += recoverActual;
+//			return recoverActual;	
 			
-			int compared = Math.min(this.MAX_MP, this.mp);
-				System.out.println("compared " + compared);
-			this.mp = compared;
+				
+			// My way (this should be avoided because it once exceed the limit of MAX_MP)	
+			int demand = Math.min(this.MAX_MP, this.mp);
+				System.out.println("compared " + demand);
+			this.mp = demand;
 			
 				System.out.println(this.name + " gained " + recover + " and recovered and become " + this.mp);
 				System.out.println("Last output " + this.mp);
-			return compared;
+			return demand;
 		}
 	
 		public void selfAid() {
@@ -30,4 +37,8 @@ public class Cleric {
 			System.out.println("Used " + this.mp);
 		}
 }
+
+
+
+
 
